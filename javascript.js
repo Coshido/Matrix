@@ -48,7 +48,7 @@ class Effect {
   constructor(canvasHeight, canvasWidth) {
     this.canvasHeight = canvasHeight;
     this.canvasWidth = canvasWidth;
-    this.fontSize = 15;
+    this.fontSize = 20;
     this.column = this.canvasWidth / this.fontSize;
     this.character = [];
     this.#initialize();
@@ -68,7 +68,7 @@ class Effect {
 }
 const effect = new Effect(canvas.height, canvas.width);
 let lastTime = 0;
-const fps = 20;
+const fps = 30;
 const nextFrame = 1000 / fps;
 let timer = 0;
 
@@ -95,3 +95,16 @@ window.addEventListener("resize", function () {
   canvas.width = window.innerWidth;
   effect.resize(canvas.height, canvas.width);
 });
+
+function createFooter() {
+  let footer = document.createElement("footer");
+  let footerLink = document.createElement("a");
+  footerLink.classList.add("footer-link");
+  footerLink.href = "https://github.com/Coshido?tab=repositories";
+  footerLink.target = "_blank";
+  footerLink.innerHTML = `Copyrights © 2022 Coshido  <i class="fab fa-github"></i>`;
+  footer.appendChild(footerLink);
+  return footer;
+}
+let footer = createFooter();
+document.querySelector("body").appendChild(footer);
